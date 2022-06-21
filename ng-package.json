@@ -5,6 +5,7 @@
     },
     "whitelistedNonPeerDependencies": [
         "luxon",
+        "moment",
         "@types/luxon"
     ]
 }
