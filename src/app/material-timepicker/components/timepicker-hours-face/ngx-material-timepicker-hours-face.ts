@@ -1,9 +1,10 @@
+import { Injectable } from '@angular/core';
 import { EventEmitter, Input, Output } from '@angular/core';
 import { DateTime } from 'luxon';
 import { ClockFaceTime } from '../../models/clock-face-time.interface';
 import { TimepickerTimeUtils } from '../../utils/timepicker-time.utils';
 
-
+@Injectable()
 export class NgxMaterialTimepickerHoursFace {
 
     @Input() selectedHour: ClockFaceTime;

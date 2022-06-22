@@ -14,7 +14,7 @@ export class TimeParserPipe implements PipeTransform {
     private readonly numberingSystem: string;
 
     constructor(@Inject(TIME_LOCALE) private locale: string) {
-        this.numberingSystem = DateTime.local().setLocale(this.locale).resolvedLocaleOpts().numberingSystem;
+        this.numberingSystem = DateTime.local().setLocale(this.locale).resolvedLocaleOptions().numberingSystem;
     }
 
     transform(time: string | number, timeUnit = TimeUnit.HOUR): number | string {

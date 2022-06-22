@@ -7,7 +7,6 @@ import { TimepickerTimeUtils } from '../../utils/timepicker-time.utils';
     templateUrl: 'ngx-material-timepicker-24-hours-face.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-
 export class NgxMaterialTimepicker24HoursFaceComponent extends NgxMaterialTimepickerHoursFace implements AfterContentInit {
 
     constructor() {

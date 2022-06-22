@@ -28,7 +28,7 @@ describe('TimeParserPipe', () => {
         const unparsedHours = Array(24).fill(0).map((v, i) => v + i);
 
         unparsedHours.forEach(hour => {
-            const unparsedHour = DateTime.fromObject({hour, numberingSystem: 'arab'}).toFormat('H');
+            const unparsedHour = DateTime.fromObject({hour}, {numberingSystem: 'arab'}).toFormat('H');
 
             expect(pipe.transform(unparsedHour, TimeUnit.HOUR)).toBe(hour);
         });
@@ -38,7 +38,7 @@ describe('TimeParserPipe', () => {
         const unparsedMinutes = Array(59).fill(0).map((v, i) => v + i);
 
         unparsedMinutes.forEach(minute => {
-            const unparsedMinute = DateTime.fromObject({minute, numberingSystem: 'arab'}).toFormat('m');
+            const unparsedMinute = DateTime.fromObject({minute}, {numberingSystem: 'arab'}).toFormat('m');
 
             expect(pipe.transform(unparsedMinute, TimeUnit.MINUTE)).toBe(minute);
         });

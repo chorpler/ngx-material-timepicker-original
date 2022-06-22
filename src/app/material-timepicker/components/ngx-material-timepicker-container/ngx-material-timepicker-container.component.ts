@@ -1,18 +1,32 @@
-import { Component, HostListener, Inject, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
-import { ClockFaceTime } from '../../models/clock-face-time.interface';
-import { TimePeriod } from '../../models/time-period.enum';
-import { TimeUnit } from '../../models/time-unit.enum';
-import { DateTime } from 'luxon';
-import { animate, AnimationEvent, style, transition, trigger } from '@angular/animations';
-import { NgxMaterialTimepickerService } from '../../services/ngx-material-timepicker.service';
-import { Observable, Subject } from 'rxjs';
-import { shareReplay, takeUntil } from 'rxjs/operators';
-import { TimeAdapter } from '../../services/time-adapter';
-import { TimepickerRef } from '../../models/timepicker-ref.interface';
-import { TimepickerConfig } from '../../models/timepicker-config.interface';
+import { Component                         } from '@angular/core'                                       ;
+import { HostListener                      } from '@angular/core'                                       ;
+import { Inject                            } from '@angular/core'                                       ;
+import { Input                             } from '@angular/core'                                       ;
+import { OnDestroy                         } from '@angular/core'                                       ;
+import { OnInit                            } from '@angular/core'                                       ;
+import { TemplateRef                       } from '@angular/core'                                       ;
+import { ClockFaceTime                     } from '../../models/clock-face-time.interface'              ;
+import { TimePeriod                        } from '../../models/time-period.enum'                       ;
+import { TimeUnit                          } from '../../models/time-unit.enum'                         ;
+import { DateTime                          } from 'luxon'                                               ;
+import { AnimationEvent                    } from '@angular/animations'                                 ;
+import { NgxMaterialTimepickerService      } from '../../services/ngx-material-timepicker.service'      ;
+import { Observable                        } from 'rxjs'                                                ;
+import { Subject                           } from 'rxjs'                                                ;
+import { TimeAdapter                       } from '../../services/time-adapter'                         ;
+import { TimepickerRef                     } from '../../models/timepicker-ref.interface'               ;
+import { TimepickerConfig                  } from '../../models/timepicker-config.interface'            ;
 import { NgxMaterialTimepickerEventService } from '../../services/ngx-material-timepicker-event.service';
-import { NgxMaterialTimepickerTheme } from '../../models/ngx-material-timepicker-theme.interface';
-import { TIME_LOCALE } from '../../tokens/time-locale.token';
+import { NgxMaterialTimepickerTheme        } from '../../models/ngx-material-timepicker-theme.interface';
+import { TIME_LOCALE                       } from '../../tokens/time-locale.token'                      ;
+
+import { animate                           } from '@angular/animations'                                 ;
+import { style                             } from '@angular/animations'                                 ;
+import { transition                        } from '@angular/animations'                                 ;
+import { trigger                           } from '@angular/animations'                                 ;
+import { shareReplay                       } from 'rxjs/operators'                                      ;
+import { takeUntil                         } from 'rxjs/operators'                                      ;
+
 
 export enum AnimationState {
     ENTER = 'enter',
@@ -162,7 +176,7 @@ export class NgxMaterialTimepickerContainerComponent implements OnInit, OnDestro
     }
 
     ngOnDestroy(): void {
-        this.unsubscribe.next();
+        this.unsubscribe.next(undefined);
         this.unsubscribe.complete();
     }
 

@@ -1,14 +1,17 @@
-import { DateTime, LocaleOptions } from 'luxon';
+import { DateTime, DateTimeFormatOptions, LocaleOptions } from 'luxon';
 
 import { TimeFormat } from '../models/time-format.enum';
 import { TimePeriod } from '../models/time-period.enum';
 import { isBetween, isSameOrAfter, isSameOrBefore } from '../utils/timepicker.utils';
 import { TimeOptions } from '../models/time-options.interface';
 
+type HourCycle = "h11" | "h12" | "h23" | "h24" | undefined;
+type LocaleIdentifier = string | undefined;
+
 // @dynamic
 export class TimeAdapter {
     static DEFAULT_FORMAT = 12;
-    static DEFAULT_LOCALE = 'en-US';
+    static DEFAULT_LOCALE:LocaleIdentifier = 'en-US';
     static DEFAULT_NUMBERING_SYSTEM = 'latn';
 
     static parseTime(time: string, opts: TimeOptions): DateTime {
@@ -42,7 +45,7 @@ export class TimeAdapter {
 
     static toLocaleTimeString(time: string, opts: TimeOptions = {}): string {
         const {format = TimeAdapter.DEFAULT_FORMAT, locale = TimeAdapter.DEFAULT_LOCALE} = opts;
-        const hourCycle = format === 24 ? 'h23' : 'h12';
+        const hourCycle:HourCycle = format === 24 ? 'h23' : 'h12';
         const timeFormat = {...DateTime.TIME_SIMPLE, hourCycle};
         const timeMask = (format === 24) ? TimeFormat.TWENTY_FOUR_SHORT : TimeFormat.TWELVE_SHORT;
 
@@ -53,7 +56,7 @@ export class TimeAdapter {
         time: string,
         min?: DateTime,
         max?: DateTime,
-        granularity?: 'hours' | 'minutes',
+        granularity?: 'hours' | 'minute',
         minutesGap?: number | null,
         format?: number
     ): boolean {
@@ -105,7 +108,7 @@ export class TimeAdapter {
     }
 
     private static getLocaleOptionsByTime(time: string, opts: TimeOptions): LocaleOptions {
-        const {numberingSystem, locale} = DateTime.local().setLocale(opts.locale).resolvedLocaleOpts();
+        const {numberingSystem, locale} = DateTime.local().setLocale(opts.locale).resolvedLocaleOptions();
         const localeConfig: LocaleOptions = {numberingSystem: numberingSystem, locale};
         const defaultConfig: LocaleOptions = {numberingSystem: TimeAdapter.DEFAULT_NUMBERING_SYSTEM, locale: TimeAdapter.DEFAULT_LOCALE};
 

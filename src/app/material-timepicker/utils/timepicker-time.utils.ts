@@ -56,7 +56,7 @@ export class TimepickerTimeUtils {
 
                 return {
                     ...value,
-                    disabled: !TimeAdapter.isTimeAvailable(currentTime, config.min, config.max, 'minutes')
+                    disabled: !TimeAdapter.isTimeAvailable(currentTime, config.min, config.max, 'minute')
                 };
             });
         }

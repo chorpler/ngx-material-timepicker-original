@@ -41,7 +41,7 @@ export class NgxMaterialTimepickerDialControlComponent {
         event.preventDefault();
         this.previousTime = this.time;
         this.timeUnitChanged.next(unit);
-        this.focused.next();
+        this.focused.next(undefined);
     }
 
     updateTime(): void {

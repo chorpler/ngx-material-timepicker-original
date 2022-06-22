@@ -135,13 +135,13 @@ export class NgxMaterialTimepickerComponent implements TimepickerRef {
             timepickerClass: this.timepickerClass,
             inputElement: this.inputElement
         });
-        this.opened.next();
+        this.opened.next(undefined);
         this.subscribeToEvents();
     }
 
     close(): void {
         this.domService.destroyTimepicker();
-        this.closed.next();
+        this.closed.next(undefined);
         this.unsubscribeFromEvents();
     }
 
@@ -157,7 +157,7 @@ export class NgxMaterialTimepickerComponent implements TimepickerRef {
     }
 
     private unsubscribeFromEvents(): void {
-        this.unsubscribe.next();
+        this.unsubscribe.next(undefined);
         this.unsubscribe.complete();
     }
 }

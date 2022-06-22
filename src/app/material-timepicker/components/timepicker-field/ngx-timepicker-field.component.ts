@@ -195,7 +195,7 @@ export class NgxTimepickerFieldComponent implements OnInit, OnDestroy, ControlVa
     }
 
     ngOnDestroy(): void {
-        this.unsubscribe$.next();
+        this.unsubscribe$.next(undefined);
         this.unsubscribe$.complete();
     }
 
@@ -260,7 +260,7 @@ export class NgxTimepickerFieldComponent implements OnInit, OnDestroy, ControlVa
 
     private initTime(time): void {
         const isDefaultTimeAvailable = TimeAdapter
-            .isTimeAvailable(time, this.min as DateTime, this.max as DateTime, 'minutes', null, this.format);
+            .isTimeAvailable(time, this.min as DateTime, this.max as DateTime, 'minute', null, this.format);
         if (!isDefaultTimeAvailable) {
             if (this.min) {
                 this.updateTime(TimeAdapter.fromDateTimeToString(this.min as DateTime, this.format));

@@ -299,7 +299,7 @@ describe('NgxTimepickerTimeControlComponent', () => {
     describe('onModelChange', () => {
 
         it('should parse value and set it to time property', () => {
-            const unparsedTime = DateTime.fromObject({minute: 10, numberingSystem: 'arab'}).toFormat('m');
+            const unparsedTime = DateTime.fromObject({minute: 10}, {numberingSystem: 'arab'}).toFormat('m');
             component.time = 5;
             component.timeUnit = TimeUnit.MINUTE;
 
